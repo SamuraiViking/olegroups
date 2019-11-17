@@ -1,10 +1,12 @@
-from rest_framework import path, include
+from rest_framework import routers
+from django.urls import path, include
 from groups import views
 
-router = DefaultRouter()
+router = routers.DefaultRouter()
 router.register(r'groups', views.GroupView, 'groups')
-router.register(r'members', views.MemberView, 'members')
+router.register(r'people', views.PersonView, 'people')
+router.register(r'memberships', views.MembershipView, 'memberships')
 
 urlpatterns = [
-    path('api/', include(router.urls))
+    path('', include(router.urls)),
 ]
